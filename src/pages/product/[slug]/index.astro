@@ -1,0 +1,64 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Container from '../../../components/site/Container.astro';
+import { getProductBySlug, getProducts } from '../../../lib/content';
+import site from '../../../data/site';
+
+export async function getStaticPaths() {
+  const products = await getProducts();
+  return products.map((product) => ({
+    params: { slug: product.slug },
+  }));
+}
+
+const product = await getProductBySlug(Astro.params.slug ?? '');
+
+if (!product) {
+  throw new Error(`Missing product for slug "${Astro.params.slug}".`);
+}
+
+const { Content } = await product.render();
+---
+
+<Layout
+  title={product.data.seoTitle ?? product.data.title}
+  description={product.data.seoDescription || product.data.description || site.defaultDescription}
+  canonical={`/product/${product.slug}/`}
+>
+  <section class="py-16 md:py-24">
+    <Container class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="content-card p-8 md:p-10">
+        <p class="eyebrow mb-4 text-[color:var(--color-accent)]">{product.data.format}</p>
+        <h1 class="display-title text-4xl leading-tight md:text-6xl">{product.data.book}</h1>
+        <p class="mt-4 max-w-2xl text-lg leading-8 text-[color:var(--color-muted)]">
+          {product.data.description}
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <p class="text-2xl font-semibold">${product.data.price.toFixed(2)}</p>
+          <span class="rounded-full border border-[color:var(--color-line)] px-4 py-2 text-sm text-[color:var(--color-muted)]">
+            {product.data.availability}
+          </span>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            class="inline-flex rounded-full px-6 py-3 button-primary"
+            href={product.data.purchaseUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Buy with PayPal
+          </a>
+          <a class="inline-flex rounded-full px-6 py-3 button-secondary" href="/books/">
+            Back to books
+          </a>
+        </div>
+      </div>
+
+      <div class="content-card p-8 md:p-10">
+        <div class="legacy-content">
+          <Content />
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>

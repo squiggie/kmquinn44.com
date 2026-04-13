@@ -1,0 +1,64 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import Container from '../../../../../components/site/Container.astro';
+import {
+  formatPublishDate,
+  getPostByDatePath,
+  getPostPath,
+  getPosts,
+} from '../../../../../lib/content';
+import site from '../../../../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => {
+    const date = post.data.publishDate;
+
+    return {
+      params: {
+        year: String(date.getUTCFullYear()),
+        month: String(date.getUTCMonth() + 1).padStart(2, '0'),
+        day: String(date.getUTCDate()).padStart(2, '0'),
+        slug: post.slug,
+      },
+    };
+  });
+}
+
+const post = await getPostByDatePath(
+  Astro.params.year ?? '',
+  Astro.params.month ?? '',
+  Astro.params.day ?? '',
+  Astro.params.slug ?? '',
+);
+
+if (!post) {
+  throw new Error(`Missing post for path "${Astro.url.pathname}".`);
+}
+
+const { Content } = await post.render();
+---
+
+<Layout
+  title={post.data.seoTitle ?? post.data.title}
+  description={post.data.seoDescription || post.data.excerpt || site.defaultDescription}
+  canonical={getPostPath(post)}
+>
+  <section class="py-16 md:py-24">
+    <Container width="narrow" class="space-y-8">
+      <header class="space-y-4">
+        <p class="eyebrow text-[color:var(--color-accent)]">{formatPublishDate(post.data.publishDate)}</p>
+        <h1 class="display-title text-4xl leading-tight md:text-6xl">{post.data.title}</h1>
+        {post.data.excerpt && (
+          <p class="max-w-2xl text-lg leading-8 text-[color:var(--color-muted)]">{post.data.excerpt}</p>
+        )}
+      </header>
+
+      <article class="content-card p-8 md:p-10">
+        <div class="legacy-content">
+          <Content />
+        </div>
+      </article>
+    </Container>
+  </section>
+</Layout>

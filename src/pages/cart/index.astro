@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/site/Container.astro';
+---
+
+<Layout title="Cart" description="Direct checkout information for K.M. Quinn books." canonical="/cart/">
+  <section class="py-20">
+    <Container width="narrow">
+      <div class="content-card p-8 text-center md:p-10">
+        <p class="eyebrow mb-4 text-[color:var(--color-accent)]">Direct Checkout</p>
+        <h1 class="display-title mb-4 text-4xl md:text-6xl">This site uses direct book checkout.</h1>
+        <p class="mx-auto max-w-2xl text-lg leading-8 text-[color:var(--color-muted)]">
+          Instead of a traditional cart, each book page links straight to its PayPal checkout.
+          Browse the available signed editions and purchase the title you want directly.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a class="inline-flex rounded-full px-6 py-3 button-primary" href="/shop/">Visit the shop</a>
+          <a class="inline-flex rounded-full px-6 py-3 button-secondary" href="/books/">Browse books</a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>

@@ -1,0 +1,355 @@
+:root {
+  --color-ink: #1f1b17;
+  --color-muted: #6e6258;
+  --color-paper: #f2eadf;
+  --color-paper-strong: #e7dbc9;
+  --color-accent: #8a3b2d;
+  --color-accent-soft: #c78e6b;
+  --color-line: rgba(31, 27, 23, 0.12);
+  --shadow-soft: 0 24px 80px rgba(31, 27, 23, 0.12);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-fade-in {
+  animation: fadeIn 0.6s ease both;
+}
+
+.nav-link {
+  position: relative;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-ink);
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+  color: var(--color-ink);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.header-scrolled {
+  box-shadow: 0 1px 24px rgba(31, 27, 23, 0.1);
+}
+
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--color-ink);
+  transition: transform 0.2s;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(251, 246, 239, 0.97);
+  backdrop-filter: blur(16px);
+  z-index: 50;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu.open {
+  display: flex;
+  animation: fadeIn 0.25s ease both;
+}
+
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.mobile-menu a:hover {
+  color: var(--color-accent);
+}
+
+html {
+  background: linear-gradient(180deg, #fbf6ef 0%, #efe3d3 100%);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(199, 142, 107, 0.24), transparent 32rem),
+    linear-gradient(180deg, #fbf6ef 0%, #efe3d3 100%);
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(138, 59, 45, 0.18);
+}
+
+.site-shell {
+  min-height: 100vh;
+}
+
+.site-surface {
+  background: rgba(255, 250, 244, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.display-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.section-frame {
+  border: 1px solid var(--color-line);
+  border-radius: 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.button-primary {
+  background: var(--color-ink);
+  color: #fffaf2;
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+}
+
+.content-card {
+  border: 1px solid var(--color-line);
+  border-radius: 1.5rem;
+  background: rgba(255, 250, 244, 0.78);
+  box-shadow: var(--shadow-soft);
+}
+
+.legacy-content {
+  color: var(--color-ink);
+}
+
+.legacy-content :where(h1, h2, h3, h4) {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+
+.legacy-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4.75rem);
+}
+
+.legacy-content h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.legacy-content h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+}
+
+.legacy-content :where(p, li, blockquote) {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.legacy-content p,
+.legacy-content ul,
+.legacy-content ol,
+.legacy-content blockquote,
+.legacy-content figure,
+.legacy-content .wp-block-columns,
+.legacy-content .wp-block-group,
+.legacy-content .wp-block-cover {
+  margin: 0 0 1.5rem;
+}
+
+.legacy-content a {
+  color: var(--color-accent);
+}
+
+.legacy-content img,
+.legacy-content video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+}
+
+.legacy-content figure {
+  overflow: hidden;
+}
+
+.legacy-content .wp-block-button__link,
+.legacy-content .wp-element-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: #fffaf2;
+  padding: 0.75rem 1.4rem;
+  text-decoration: none;
+}
+
+.legacy-content blockquote,
+.legacy-content .wp-block-pullquote {
+  border-left: 3px solid rgba(138, 59, 45, 0.3);
+  margin-left: 0;
+  padding-left: 1.25rem;
+}
+
+.legacy-content .wp-block-columns {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.legacy-content .wp-block-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.legacy-content .wp-block-spacer {
+  display: none;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.field-input {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  background: rgba(255, 250, 244, 0.88);
+  padding: 0.95rem 1rem;
+  color: var(--color-ink);
+}
+
+.field-input:focus {
+  outline: 2px solid rgba(138, 59, 45, 0.25);
+  outline-offset: 2px;
+}
+
+.book-cover-full {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-book-image {
+  filter: drop-shadow(0 32px 64px rgba(31, 27, 23, 0.3));
+  transform: rotate(-2deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-book-image:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.author-photo {
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+@media (min-width: 768px) {
+  .legacy-content .wp-block-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Featured Review Cards (Showcase Section) */
+.review-card-featured {
+  padding: 2rem;
+  border: 1px solid var(--color-line);
+  border-radius: 1.5rem;
+  background: rgba(255, 250, 244, 0.9);
+  box-shadow: var(--shadow-soft);
+  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card-featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 96px rgba(31, 27, 23, 0.15);
+}
+
+.review-stars-featured {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.star-featured {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--color-accent);
+}
+
+.review-text-featured {
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  font-family: var(--font-display);
+}
+
+.review-author-featured {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+}

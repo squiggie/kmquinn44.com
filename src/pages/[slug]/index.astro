@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/site/Container.astro';
+import { getPageBySlug, getPagePath, getPages } from '../../lib/content';
+import site from '../../data/site';
+
+const reservedSlugs = new Set([
+  'home',
+  'blog',
+  'books',
+  'contact-me',
+  'shop',
+  'cart',
+  'checkout',
+  'my-account',
+]);
+
+export async function getStaticPaths() {
+  const reservedSlugs = new Set([
+    'home',
+    'blog',
+    'books',
+    'contact-me',
+    'shop',
+    'cart',
+    'checkout',
+    'my-account',
+  ]);
+  const pages = await getPages();
+  return pages
+    .filter((page) => !reservedSlugs.has(page.slug))
+    .map((page) => ({
+      params: { slug: page.slug },
+    }));
+}
+
+const page = await getPageBySlug(Astro.params.slug ?? '');
+
+if (!page || reservedSlugs.has(page.slug)) {
+  throw new Error(`Missing page for slug "${Astro.params.slug}".`);
+}
+
+const { Content } = await page.render();
+---
+
+<Layout
+  title={page.data.seoTitle ?? page.data.title}
+  description={page.data.seoDescription || page.data.description || site.defaultDescription}
+  canonical={getPagePath(page)}
+>
+  <section class="py-8 md:py-24">
+    <Container width="narrow" class="space-y-8">
+      <header class="space-y-4">
+        <p class="eyebrow text-[color:var(--color-accent)]">Page</p>
+        <h1 class="display-title text-4xl leading-tight md:text-6xl">{page.data.title}</h1>
+      </header>
+
+      <article class="content-card p-8 md:p-10">
+        <div class="legacy-content">
+          <Content />
+        </div>
+      </article>
+    </Container>
+  </section>
+</Layout>

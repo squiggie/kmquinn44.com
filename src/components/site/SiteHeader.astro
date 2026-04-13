@@ -1,0 +1,75 @@
+---
+import Container from './Container.astro';
+import site from '../../data/site';
+
+const navItems = [
+  { href: '/books/', label: 'Books' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/events/', label: 'Events' },
+  { href: '/about-me/', label: 'About' },
+  { href: '/contact-me/', label: 'Contact' },
+];
+---
+
+<header id="site-header" class="sticky top-0 z-20 border-b border-[color:var(--color-line)] site-surface transition-shadow duration-300">
+  <Container class="flex items-center justify-between gap-6 py-4">
+    <!-- Logo -->
+    <a href="/" class="display-title text-lg md:text-xl shrink-0">{site.title}</a>
+
+    <!-- Desktop nav (center) -->
+    <nav aria-label="Primary" class="hidden md:flex gap-6 text-sm">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav-link">{item.label}</a>
+      ))}
+    </nav>
+
+    <!-- Desktop CTA -->
+    <a href="/books/" class="hidden md:inline-flex rounded-full px-5 py-2.5 text-sm button-primary shrink-0">
+      Browse Books
+    </a>
+
+    <!-- Hamburger toggle (mobile) -->
+    <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </Container>
+</header>
+
+<!-- Mobile fullscreen menu -->
+<div id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Navigation">
+  <button id="menu-close" aria-label="Close menu" class="absolute top-6 right-6 p-2 text-[color:var(--color-muted)]">✕</button>
+  {navItems.map((item) => (
+    <a href={item.href}>{item.label}</a>
+  ))}
+</div>
+
+<script>
+  // Scroll shadow
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('header-scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const close = document.getElementById('menu-close');
+  const menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    menu.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+  });
+  close.addEventListener('click', () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+
+  // Close menu when clicking a nav link
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

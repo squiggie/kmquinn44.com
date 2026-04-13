@@ -1,0 +1,40 @@
+---
+import site from '../../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = site.defaultDescription,
+  canonical,
+  image = site.seo.defaultImage,
+} = Astro.props;
+
+const pageTitle = title.includes(site.title) ? title : `${title} | ${site.title}`;
+const canonicalUrl = canonical ?? Astro.url.href;
+const imageUrl = image.startsWith('http') ? image : new URL(image, site.url).href;
+---
+
+<meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+<meta name="twitter:card" content={site.seo.twitterCard} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -1,0 +1,230 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/site/Container.astro';
+import site from '../../data/site';
+---
+
+<Layout
+  title="About K.M. Quinn | Author of Torn Robes Series"
+  description="Meet K.M. Quinn, author of the acclaimed Torn Robes series. Learn about her writing journey, faith, family, and the inspiration behind her books."
+  canonical="/about-me/"
+>
+  <!-- Hero Section with Text & Image -->
+  <section class="py-8 md:py-32">
+    <Container>
+      <div class="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+        <!-- Left: Text & CTA -->
+        <div>
+          <p class="eyebrow text-[color:var(--color-accent)] mb-4 anim-fade-up" style="animation-delay:0ms">About the Author</p>
+          <h1 class="display-title text-5xl md:text-6xl leading-tight mb-8 anim-fade-up" style="animation-delay:100ms">
+            K.M. Quinn
+          </h1>
+          <p class="text-lg text-[color:var(--color-muted)] leading-relaxed mb-6 anim-fade-up" style="animation-delay:200ms">
+            K.M. Quinn lives on the east coast where she was born and raised. She is a devoted wife, mother, and grandmother who began writing her first novel, <em>Torn Robes: Choices</em>, in 2004 while balancing work and family.
+          </p>
+          <p class="text-base text-[color:var(--color-muted)] leading-relaxed mb-8 anim-fade-up" style="animation-delay:300ms">
+            She firmly believes that <strong>"with God everything is possible"</strong>—a conviction that infuses every word she writes. Her philosophy is simple: <strong>It's all about choices.</strong> Like the legendary Sword in the Stone, regardless of where we are or where we go, our choices define us.
+          </p>
+          <div class="flex flex-wrap gap-4 anim-fade-up" style="animation-delay:400ms">
+            <a href="/books/" class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-primary">
+              Explore the Books
+            </a>
+            <a href="#journey" class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-secondary">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Image -->
+        <div class="anim-fade-up" style="animation-delay:300ms">
+          <div class="rounded-2xl overflow-hidden shadow-lg border border-[color:var(--color-line)]">
+            <img
+              src="https://kmquinn44.com/wp-content/uploads/2025/04/me-and-the-sword-2.jpg"
+              alt="K.M. Quinn"
+              class="w-full h-auto object-cover aspect-[3/4]"
+            />
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- About Details Section -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-3xl">
+        <h2 class="display-title text-4xl leading-tight mb-8">About K.M. Quinn</h2>
+
+        <!-- Personal Interests -->
+        <div class="mb-12 pb-12 border-b border-[color:var(--color-line)]">
+          <h3 class="display-title text-2xl mb-4">Beyond Writing</h3>
+          <p class="text-[color:var(--color-muted)] leading-relaxed mb-4">
+            When not crafting stories, K.M. enjoys:
+          </p>
+          <ul class="grid grid-cols-2 gap-3">
+            {['Horseback riding', 'Kayaking', 'Walking & snowshoeing', 'Beach time'].map((item) => (
+              <li class="flex items-center gap-2 text-[color:var(--color-muted)]">
+                <svg class="w-4 h-4 text-[color:var(--color-accent)] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="text-sm text-[color:var(--color-muted)] italic mt-6">
+            The ocean holds special significance as her "happy place"—a constant companion since childhood.
+          </p>
+        </div>
+
+        <!-- Passion for Learning -->
+        <div>
+          <h3 class="display-title text-2xl mb-4">A Lifelong Learner</h3>
+          <p class="text-[color:var(--color-muted)] leading-relaxed">
+            K.M. is an avid researcher and history enthusiast who finds joy in exploring new subjects and ideas. She believes that every story has the power to awaken hearts and illuminate the transformative possibilities within us all.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Journey Timeline Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-transparent via-[rgba(199,142,107,0.06)] to-transparent" id="journey">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="display-title text-4xl text-center mb-4">Writing Journey</h2>
+        <p class="text-lg text-center text-[color:var(--color-muted)] mb-16">
+          From inspiration to published author, K.M. Quinn's journey reflects dedication, faith, and a passion for storytelling.
+        </p>
+
+        <div class="space-y-8">
+          {[
+            { year: '2004', title: 'The Beginning', desc: 'Started writing Torn Robes: Choices while balancing work and family responsibilities.' },
+            { year: '2023', title: 'The Reckoning', desc: 'Released Torn Robes: Reckoning, deepening the spiritual journey of Gilford.' },
+            { year: '2024', title: 'The Series Continues', desc: 'Building toward the trilogy\'s conclusion with The King\'s Highway, coming soon.' },
+            { year: 'Today', title: 'Sharing God\'s Love', desc: 'Continuing to write stories that illuminate transformation, redemption, and the power of choice.' }
+          ].map((milestone) => (
+            <div class="flex gap-8">
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-[color:var(--color-accent)] text-white flex items-center justify-center font-semibold text-sm flex-shrink-0">
+                  {milestone.year}
+                </div>
+                <div class="w-0.5 h-12 bg-[color:var(--color-line)] mt-4"></div>
+              </div>
+              <div class="pb-8">
+                <h3 class="display-title text-xl mb-2">{milestone.title}</h3>
+                <p class="text-[color:var(--color-muted)] leading-relaxed">{milestone.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Family Section -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <h2 class="display-title text-4xl text-center mb-4">Family & Community</h2>
+      <p class="text-lg text-center text-[color:var(--color-muted)] mb-16 max-w-2xl mx-auto">
+        At the heart of K.M. Quinn's life is family. Meet the important people who inspire her work.
+      </p>
+
+      <!-- Jax -->
+      <div class="max-w-2xl mx-auto mb-16">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-[color:var(--color-line)] mb-6">
+          <img
+            src="https://i0.wp.com/kmquinn44.com/wp-content/uploads/2023/02/img_3091.jpg?resize=748%2C558&ssl=1"
+            alt="Jax"
+            class="w-full h-auto object-cover aspect-[4/3]"
+          />
+        </div>
+        <div class="text-center">
+          <h3 class="display-title text-2xl mb-3">Meet Jax</h3>
+          <p class="text-[color:var(--color-muted)] leading-relaxed">
+            A cherished member of the family, Jax represents the love and connection that anchors K.M.'s life and work.
+          </p>
+        </div>
+      </div>
+
+      <!-- Killian Gallery -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h3 class="display-title text-2xl mb-3">Meet Killian</h3>
+          <p class="text-[color:var(--color-muted)] leading-relaxed max-w-2xl mx-auto">
+            <em>"Please meet the newest addition to our family! We rescued this adorable little girl and couldn't be happier. She brings joy and love to our lives every day."</em>
+          </p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-end md:items-center flex-wrap max-w-5xl mx-auto">
+          <!-- Image 1: Portrait -->
+          <div class="w-full md:w-64 rounded-xl overflow-hidden shadow-lg border border-[color:var(--color-line)] transform skew-y-1" style="margin-top: 0">
+            <img
+              src="https://i0.wp.com/kmquinn44.com/wp-content/uploads/2024/10/img_4064-1.jpg?resize=3024%2C4032&ssl=1"
+              alt="Killian portrait"
+              class="w-full h-auto object-cover aspect-[3/4]"
+            />
+          </div>
+
+          <!-- Image 2: Playing -->
+          <div class="w-full md:w-64 rounded-xl overflow-hidden shadow-lg border border-[color:var(--color-line)] transform -skew-y-1" style="margin-top: 2rem">
+            <img
+              src="https://i0.wp.com/kmquinn44.com/wp-content/uploads/2024/10/img_37661-1.jpg?resize=3024%2C4032&ssl=1"
+              alt="Killian playing"
+              class="w-full h-auto object-cover aspect-[3/4]"
+            />
+          </div>
+
+          <!-- Image 3: Sleeping with Lamby -->
+          <div class="w-full md:w-64 rounded-xl overflow-hidden shadow-lg border border-[color:var(--color-line)] transform skew-y-1" style="margin-top: 1rem">
+            <img
+              src="https://i0.wp.com/kmquinn44.com/wp-content/uploads/2024/10/sleeping-with-lamby.jpg?resize=3024%2C4032&ssl=1"
+              alt="Killian sleeping with Lamby"
+              class="w-full h-auto object-cover aspect-[3/4]"
+            />
+          </div>
+        </div>
+
+        <p class="text-sm text-[color:var(--color-accent)] font-semibold text-center mt-12">A rescue dog loved beyond measure.</p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Core Values Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-transparent via-[rgba(199,142,107,0.06)] to-transparent">
+    <Container>
+      <h2 class="display-title text-4xl text-center mb-16">What Drives Her Writing</h2>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {[
+          { title: 'Faith', desc: 'A deep conviction that God guides all paths and makes all things possible.' },
+          { title: 'Transformation', desc: 'Stories that illuminate how choice and accountability reshape our lives.' },
+          { title: 'Connection', desc: 'Bridging readers and characters through authentic, relatable human experiences.' }
+        ].map((value) => (
+          <div class="text-center p-8 rounded-xl border border-[color:var(--color-line)] bg-[rgba(255,250,244,0.5)]">
+            <h3 class="display-title text-xl mb-3">{value.title}</h3>
+            <p class="text-sm text-[color:var(--color-muted)] leading-relaxed">{value.desc}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24">
+    <Container class="max-w-3xl mx-auto text-center">
+      <h2 class="display-title text-3xl md:text-4xl mb-6">Ready to Enter Gilford?</h2>
+      <p class="text-lg text-[color:var(--color-muted)] mb-8 leading-relaxed">
+        Discover K.M. Quinn's acclaimed Torn Robes series and explore the transformative stories that have captured readers' hearts.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/books/" class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-primary">
+          Explore the Books
+        </a>
+        <a href="/contact-me/" class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-secondary">
+          Get in Touch
+        </a>
+      </div>
+    </Container>
+  </section>
+</Layout>
+

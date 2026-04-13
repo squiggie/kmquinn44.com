@@ -1,0 +1,208 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/site/Container.astro';
+import { formatPublishDate, getPageBySlug, getPostPath, getPosts } from '../../lib/content';
+import site from '../../data/site';
+
+const page = await getPageBySlug('blog');
+const posts = await getPosts();
+
+if (!page) {
+  throw new Error('Missing blog page content.');
+}
+
+// Calculate estimated reading time (rough estimate: 200 words per minute)
+const getReadingTime = (post: any): number => {
+  const wordCount = post.body?.split(/\s+/).length || 100;
+  return Math.max(2, Math.ceil(wordCount / 200));
+};
+
+// Extract first image from post content
+const getFirstImageFromPost = (post: any): string | null => {
+  if (!post.body) return null;
+
+  // Look for img tags in the HTML content
+  const imgMatch = post.body.match(/<img[^>]+src=["']([^"']+)["']/);
+  if (imgMatch && imgMatch[1]) {
+    return imgMatch[1];
+  }
+  return null;
+};
+
+// Placeholder gradient backgrounds based on index
+const getPlaceholderGradient = (index: number): string => {
+  const gradients = [
+    'from-[#8a3b2d] via-[#c78e6b] to-[#f2eadf]',
+    'from-[#6e6258] via-[#a89382] to-[#dcc8b6]',
+    'from-[#c78e6b] via-[#e8c4a8] to-[#f5ede1]',
+    'from-[#a67c5b] via-[#d4a583] to-[#f0e4d8]',
+    'from-[#8a3b2d] via-[#b8714d] to-[#e5d4c1]',
+    'from-[#5a4a42] via-[#8a7068] to-[#d9ccc0]',
+  ];
+  return gradients[index % gradients.length];
+};
+
+// Featured post (first one with most content)
+const featuredPost = posts[0];
+const remainingPosts = posts.slice(1);
+
+const { Content } = await page.render();
+---
+
+<Layout
+  title={page.data.seoTitle ?? page.data.title}
+  description={page.data.seoDescription || page.data.description || site.defaultDescription}
+  canonical="/blog/"
+>
+  <!-- Page Header -->
+  <section class="py-8 md:py-24">
+    <Container>
+      <div class="max-w-2xl">
+        <p class="eyebrow text-[color:var(--color-accent)] mb-4">Journal</p>
+        <h1 class="display-title text-5xl md:text-7xl leading-tight mb-6">{page.data.title}</h1>
+        <p class="text-lg text-[color:var(--color-muted)] leading-relaxed">
+          Essays, story notes, character spotlights, and updates from the world of Torn Robes.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Featured Post -->
+  {featuredPost && (
+    <section class="py-12 md:py-20">
+      <Container>
+        <article class="blog-card-featured group overflow-hidden rounded-2xl border border-[color:var(--color-line)] shadow-lg transition-all duration-300">
+          <!-- Featured Image -->
+          {(() => {
+            const featuredImage = getFirstImageFromPost(featuredPost);
+            return featuredImage ? (
+              <div class="relative h-80 md:h-96 overflow-hidden flex-shrink-0">
+                <img
+                  src={featuredImage}
+                  alt={featuredPost.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[rgba(31,27,23,0.3)] to-transparent"></div>
+              </div>
+            ) : (
+              <div class="relative h-80 md:h-96 overflow-hidden bg-gradient-to-br {getPlaceholderGradient(0)} flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-[rgba(31,27,23,0.4)] to-transparent"></div>
+                <svg class="absolute w-24 h-24 opacity-10" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                </svg>
+              </div>
+            );
+          })()}
+
+
+          <!-- Featured Content -->
+          <div class="p-8 md:p-10 bg-[rgba(255,250,244,0.9)]">
+            <div class="flex flex-wrap gap-3 mb-6">
+              <span class="inline-block px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide bg-[color:var(--color-accent)] text-white">Featured</span>
+              <span class="inline-block px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide bg-[color:var(--color-paper-strong)] text-[color:var(--color-ink)]">
+                {getReadingTime(featuredPost)} min read
+              </span>
+            </div>
+
+            <h2 class="display-title text-3xl md:text-4xl leading-tight mb-4">
+              <a href={getPostPath(featuredPost)} class="hover:text-[color:var(--color-accent)] transition-colors">
+                {featuredPost.data.title}
+              </a>
+            </h2>
+
+            <p class="text-sm text-[color:var(--color-muted)] uppercase tracking-wide mb-6">
+              {formatPublishDate(featuredPost.data.publishDate)}
+            </p>
+
+            <p class="text-[color:var(--color-muted)] leading-relaxed mb-8 line-clamp-3">
+              {featuredPost.data.excerpt || 'Read the full entry for story updates and reflections.'}
+            </p>
+
+            <a href={getPostPath(featuredPost)} class="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-accent)] hover:gap-3 transition-all">
+              Continue reading
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </article>
+      </Container>
+    </section>
+  )}
+
+  <!-- Posts Grid -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {remainingPosts.map((post, index) => {
+          const postImage = getFirstImageFromPost(post);
+          return (
+            <article class="blog-card group flex h-full flex-col overflow-hidden rounded-xl border border-[color:var(--color-line)] transition-all duration-300 hover:shadow-lg hover:border-[color:var(--color-accent-soft)]">
+              <!-- Image -->
+              {postImage ? (
+                <div class="relative h-48 overflow-hidden flex-shrink-0">
+                  <img
+                    src={postImage}
+                    alt={post.data.title}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[rgba(31,27,23,0.3)] to-transparent group-hover:from-[rgba(31,27,23,0.5)] transition-all duration-300"></div>
+                </div>
+              ) : (
+                <div class="relative h-48 overflow-hidden bg-gradient-to-br {getPlaceholderGradient(index + 1)} flex-shrink-0">
+                  <div class="absolute inset-0 bg-gradient-to-t from-[rgba(31,27,23,0.3)] to-transparent group-hover:from-[rgba(31,27,23,0.5)] transition-all duration-300"></div>
+                  <svg class="absolute w-16 h-16 opacity-10 group-hover:opacity-15 transition-opacity" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                  </svg>
+                </div>
+              )}
+
+            <!-- Content -->
+            <div class="flex flex-col flex-1 p-6 bg-[rgba(255,250,244,0.95)]">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-accent)]">
+                  {getReadingTime(post)} min
+                </span>
+                <span class="text-[color:var(--color-line)]">•</span>
+                <span class="text-xs text-[color:var(--color-muted)] uppercase tracking-widest">
+                  {formatPublishDate(post.data.publishDate).split(',')[0]}
+                </span>
+              </div>
+
+              <h3 class="display-title text-xl leading-tight mb-3 group-hover:text-[color:var(--color-accent)] transition-colors">
+                <a href={getPostPath(post)}>{post.data.title}</a>
+              </h3>
+
+              <p class="text-sm text-[color:var(--color-muted)] leading-relaxed flex-1 mb-4 line-clamp-2">
+                {post.data.excerpt || 'Read the full entry for story updates and reflections.'}
+              </p>
+
+              <a href={getPostPath(post)} class="inline-flex items-center gap-1 text-xs font-semibold text-[color:var(--color-accent)] hover:gap-2 transition-all">
+                Read →
+              </a>
+            </div>
+          </article>
+          );
+        })}
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  .blog-card {
+    background: rgba(255, 250, 244, 0.95);
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .blog-card-featured {
+    background: rgba(255, 250, 244, 0.95);
+  }
+
+  .blog-card-featured:hover {
+    box-shadow: 0 32px 96px rgba(31, 27, 23, 0.15);
+  }
+</style>

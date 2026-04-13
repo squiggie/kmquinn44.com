@@ -1,0 +1,30 @@
+---
+import SeoHead from '../components/site/SeoHead.astro';
+import SiteFooter from '../components/site/SiteFooter.astro';
+import SiteHeader from '../components/site/SiteHeader.astro';
+import site from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+}
+
+const { title, description = site.defaultDescription, canonical, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SeoHead title={title} description={description} canonical={canonical} image={image} />
+  </head>
+  <body class="site-shell text-[color:var(--color-ink)]">
+    <SiteHeader />
+    <main class="pb-12">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/site/Container.astro';
+import { getProducts } from '../lib/content';
+import site from '../data/site';
+
+const products = await getProducts();
+
+// Get unique books for showcase
+const featuredBooks = [
+  { slug: 'torn-robes-choices', title: 'Torn Robes: Choices', image: '/images/books/torn-robes-choices.png', desc: 'Pastor John arrives in Gilford seeking redemption. What unfolds is a transformation that shakes the entire community.' },
+  { slug: 'torn-robes-reckoning', title: 'Torn Robes: Reckoning', image: '/images/books/reckoning.jpg', desc: 'Hidden truths surface. Characters face the consequences of their choices. Grace and accountability intertwine.' },
+  { slug: 'torn-robes-kings-highway', title: 'Torn Robes: The King\'s Highway', image: '/images/books/kings-highway.png', desc: 'The trilogy concludes. Every road of faith leads here. Every reckoning finds resolution. Coming soon.' },
+];
+---
+
+<Layout
+  title="K.M. Quinn | Torn Robes Series"
+  description="Discover the Torn Robes series: stories of faith, transformation, and redemption from K.M. Quinn."
+  canonical="/"
+>
+  <!-- HERO: King's Highway -->
+  <section class="relative py-8 md:py-28 overflow-hidden">
+    <div class="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[color:var(--color-accent-soft)] opacity-10 blur-3xl"></div>
+
+    <Container class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+      <!-- Left: Hero copy -->
+      <div class="space-y-7">
+        <p class="eyebrow text-[color:var(--color-accent)] anim-fade-up" style="animation-delay:0ms">
+          Torn Robes Series · Book Three
+        </p>
+        <h1 class="display-title text-5xl leading-[0.92] md:text-7xl lg:text-6xl anim-fade-up" style="animation-delay:80ms">
+          The King's Highway
+        </h1>
+        <p class="text-lg text-[color:var(--color-accent)] font-medium anim-fade-up" style="animation-delay:160ms">
+          Coming Soon
+        </p>
+        <p class="max-w-xl text-lg leading-8 text-[color:var(--color-muted)] anim-fade-up" style="animation-delay:180ms">
+          The final chapter. Where every road of faith leads, every reckoning finds resolution, and every torn robe is made whole.
+        </p>
+        <div class="flex flex-wrap gap-4 anim-fade-up" style="animation-delay:280ms">
+          <a class="inline-flex rounded-full px-7 py-3.5 text-sm font-medium button-primary" href="#books">
+            Explore All Books
+          </a>
+          <a class="inline-flex rounded-full px-7 py-3.5 text-sm font-medium button-secondary" href="/contact-me/">
+            Preorder Info
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Hero image -->
+      <div class="flex items-center justify-center anim-fade-up" style="animation-delay:320ms">
+        <img
+          src="/images/books/kings-highway.png"
+          alt="Torn Robes: The King's Highway"
+          class="hero-book-image max-w-sm md:max-w-md w-full h-auto"
+        />
+      </div>
+    </Container>
+  </section>
+
+  <!-- THE SERIES: Full book covers, no crop -->
+  <section id="books" class="py-8 md:py-24 bg-gradient-to-b from-transparent via-[rgba(199,142,107,0.06)] to-transparent">
+    <Container class="space-y-12">
+      <div class="text-center space-y-4">
+        <h2 class="display-title text-4xl md:text-5xl leading-tight">
+          The Torn Robes Series
+        </h2>
+        <p class="text-lg text-[color:var(--color-muted)] max-w-2xl mx-auto">
+          Three books. One town. Infinite transformations. Each volume available in multiple editions.
+        </p>
+      </div>
+
+      <!-- Books grid: full covers, no clipping -->
+      <div class="grid gap-8 md:grid-cols-3">
+        {featuredBooks.map((book, i) => (
+          <div class="anim-fade-up text-center" style={`animation-delay:${400 + i * 100}ms`}>
+            <div class="mb-6">
+              <img
+                src={book.image}
+                alt={book.title}
+                class="book-cover-full max-w-xs mx-auto shadow-lg rounded-lg"
+              />
+            </div>
+            <h3 class="display-title text-2xl leading-snug mb-3">{book.title}</h3>
+            <p class="text-[color:var(--color-muted)] mb-6 text-sm leading-6">{book.desc}</p>
+            <a
+              href={`/books/${book.slug}/`}
+              class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-primary hover:opacity-90 transition-opacity"
+            >
+              Shop Now
+            </a>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- AUTHOR BIO: K.M. Quinn -->
+  <section class="py-8 md:py-24">
+    <Container class="max-w-5xl mx-auto">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <!-- Left: Author photo -->
+        <div class="flex justify-center anim-fade-up" style="animation-delay:400ms">
+          <img
+            src="/images/author/km-quinn.jpg"
+            alt="K.M. Quinn"
+            class="author-photo max-w-xs w-full h-auto"
+          />
+        </div>
+
+        <!-- Right: Bio -->
+        <div class="space-y-6 anim-fade-up" style="animation-delay:480ms">
+          <p class="eyebrow text-[color:var(--color-accent)]">About the Author</p>
+          <h2 class="display-title text-4xl leading-tight">K.M. Quinn</h2>
+          <div class="space-y-4 text-[color:var(--color-muted)] leading-relaxed">
+            <p>
+              K.M. Quinn is an author from the east coast where she was born and raised. A devoted wife, mother, and grandmother, she began writing <em>Torn Robes: Choices</em> in 2004 while balancing work and family.
+            </p>
+            <p>
+              Inspired by her faith and the belief that "with God everything is possible," she writes stories that illuminate transformation, redemption, and the choices that shape our lives. Her hobbies include horseback riding, kayaking, and spending time at the beach—her lifelong "happy place."
+            </p>
+            <p>
+              An avid researcher and history enthusiast, K.M. finds joy in sharing God's love through her characters' journeys. She believes every story has the power to awaken hearts.
+            </p>
+          </div>
+          <a href="/about-me/" class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-primary hover:opacity-90 transition-opacity">
+            Meet K.M. Quinn →
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA: Blog + Contact -->
+  <section class="py-8 md:py-24">
+    <Container class="max-w-3xl mx-auto">
+      <div class="grid gap-6 md:grid-cols-2">
+        <a href="/blog/" class="content-card p-8 group hover:shadow-[0_32px_80px_rgba(31,27,23,0.18)] transition-all duration-300">
+          <h3 class="display-title text-2xl mb-3 group-hover:text-[color:var(--color-accent)] transition-colors">Explore Characters</h3>
+          <p class="text-[color:var(--color-muted)] mb-4 text-sm">Dive into the characters and spiritual journeys that bring Gilford to life.</p>
+          <span class="inline-block text-sm font-medium text-[color:var(--color-accent)]">Read the Blog →</span>
+        </a>
+
+        <a href="/contact-me/" class="content-card p-8 group hover:shadow-[0_32px_80px_rgba(31,27,23,0.18)] transition-all duration-300">
+          <h3 class="display-title text-2xl mb-3 group-hover:text-[color:var(--color-accent)] transition-colors">Connect & Share</h3>
+          <p class="text-[color:var(--color-muted)] mb-4 text-sm">Questions, thoughts, or want to share your experience? Reach out directly.</p>
+          <span class="inline-block text-sm font-medium text-[color:var(--color-accent)]">Get in Touch →</span>
+        </a>
+      </div>
+    </Container>
+  </section>
+</Layout>

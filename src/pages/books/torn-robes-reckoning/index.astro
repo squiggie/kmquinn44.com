@@ -1,0 +1,100 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Container from '../../../components/site/Container.astro';
+import ReviewCard from '../../../components/site/ReviewCard.astro';
+import { getProducts, getProductPath } from '../../../lib/content';
+import { getCollection } from 'astro:content';
+
+const products = await getProducts();
+const editions = products.filter(p => p.data.book === 'Torn Robes: Reckoning');
+const allReviews = await getCollection('reviews');
+const reviews = allReviews
+  .filter(r => r.data.book === 'Torn Robes: Reckoning' && r.data.featured)
+  .slice(0, 3);
+---
+
+<Layout
+  title="Torn Robes: Reckoning | K.M. Quinn"
+  description="Book 2 of the Torn Robes series. Available in hardcover, paperback, and signed editions."
+  canonical="/books/torn-robes-reckoning/"
+>
+  <section class="py-8 md:py-24">
+    <Container>
+      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <!-- Left: Book cover -->
+        <div class="flex justify-center items-start">
+          <img
+            src="/images/books/reckoning.jpg"
+            alt="Torn Robes: Reckoning"
+            class="book-cover-full max-w-xs w-full h-auto shadow-lg rounded-lg"
+          />
+        </div>
+
+        <!-- Right: Details -->
+        <div class="space-y-6">
+          <p class="eyebrow text-[color:var(--color-accent)]">Book Two of Three</p>
+          <h1 class="display-title text-5xl leading-tight">Torn Robes: Reckoning</h1>
+
+          <div class="space-y-4 text-[color:var(--color-muted)] leading-relaxed">
+            <p>
+              The journey continues. As the people of Gilford reckon with the consequences of their choices, hidden truths surface and deeper transformations begin. The choices made in the first book now demand accountability.
+            </p>
+            <p>
+              <em>Torn Robes: Reckoning</em> is a story of grace found through facing hard truths. Characters who seemed settled are shaken. Relationships tested are strengthened. New connections form in unexpected ways. Reckoning is not punishment—it's the path to wisdom.
+            </p>
+            <p>
+              In this second volume, K.M. Quinn deepens the spiritual journey of Gilford's inhabitants, showing how faith becomes real when tested by life's most difficult moments.
+            </p>
+          </div>
+
+          {/* What Readers Say section */}
+          {reviews.length > 0 && (
+            <div class="my-8 space-y-4">
+              <p class="eyebrow text-[color:var(--color-accent)] text-sm">What Readers Say</p>
+              {reviews.map((review, idx) => (
+                <ReviewCard
+                  text={review.data.text}
+                  author={review.data.author}
+                  rating={review.data.rating}
+                  style={`animation-delay: ${100 + idx * 80}ms`}
+                />
+              ))}
+            </div>
+          )}
+
+          <hr class="my-8" />
+
+          <div>
+            <h2 class="display-title text-2xl mb-6">Choose Your Edition</h2>
+            <div class="grid gap-4 md:grid-cols-2">
+              {editions.map(edition => (
+                <div class="content-card p-6">
+                  <p class="eyebrow text-[color:var(--color-accent)] mb-2">{edition.data.format}</p>
+                  <p class="text-xl font-semibold mb-4">${edition.data.price}</p>
+                  {edition.data.availability === 'in-stock' && (
+                    <>
+                      <a
+                        href={edition.data.purchaseUrl}
+                        class="block text-center px-4 py-2.5 rounded-full text-sm font-medium button-primary hover:opacity-90 transition-opacity mb-3"
+                      >
+                        Buy with PayPal
+                      </a>
+                      <a
+                        href={getProductPath(edition)}
+                        class="block text-center text-sm text-[color:var(--color-accent)]"
+                      >
+                        View Details →
+                      </a>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <a href="/books/" class="inline-block text-[color:var(--color-accent)]">← Back to All Books</a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>

@@ -1,0 +1,157 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/site/Container.astro';
+import site from '../../data/site';
+---
+
+<Layout
+  title="Contact K.M. Quinn | Torn Robes Series"
+  description="Get in touch with K.M. Quinn. Share your thoughts, ask about the books, or inquire about events and speaking engagements."
+  canonical="/contact-me/"
+>
+  <!-- Page Header -->
+  <section class="py-8 md:py-24">
+    <Container>
+      <div class="max-w-2xl anim-fade-up" style="animation-delay: 0ms">
+        <p class="eyebrow text-[color:var(--color-accent)] mb-4">Connect</p>
+        <h1 class="display-title text-5xl md:text-6xl leading-tight mb-6">
+          Let's Connect
+        </h1>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Two Column: Info Left, Form Right -->
+  <section class="py-8 md:py-20">
+    <Container>
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Left Column: Contact Information & Social Links -->
+        <div class="anim-fade-up" style="animation-delay: 100ms">
+          <div class="mb-12">
+            <p class="text-sm uppercase tracking-widest text-[color:var(--color-accent)] font-semibold mb-4">
+              Email
+            </p>
+            <a
+              href="mailto:info@kmquinn44.com"
+              class="block text-3xl md:text-4xl font-semibold text-[color:var(--color-accent)] hover:text-[color:var(--color-accent-dark)] transition-colors break-all mb-4"
+            >
+              info@kmquinn44.com
+            </a>
+            <p class="text-sm text-[color:var(--color-muted)]">
+              Direct email—responses within 2-3 business days
+            </p>
+          </div>
+
+          <div class="mb-12">
+            <p class="text-lg text-[color:var(--color-muted)] leading-relaxed mb-6">
+              Have a question about the Torn Robes series? Want to discuss an event or collaboration? I'd love to hear from you. Reach out using any method below—I read and respond to every message.
+            </p>
+            <p class="text-sm text-[color:var(--color-muted)]">
+              <em>"Every reader's voice matters. Whether you have a question, a story to share, or want to discuss how the Torn Robes series has impacted you, I'm here to listen."</em> — K.M. Quinn
+            </p>
+          </div>
+
+          <!-- Social Links -->
+          <div>
+            <p class="text-sm uppercase tracking-widest text-[color:var(--color-accent)] font-semibold mb-6">
+              Follow & Connect
+            </p>
+            <div class="flex flex-wrap gap-6">
+              <a
+                href={site.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-2 text-[color:var(--color-muted)] hover:text-[color:var(--color-accent)] transition-colors"
+              >
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.39v-1.2h-2.5v8.5h2.5v-4.34c0-.77.62-1.4 1.4-1.4.77 0 1.4.63 1.4 1.4v4.34h2.5M6.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m-1 9.5v-8.5h2.5v8.5h-2.5z" />
+                </svg>
+                <span class="text-xs font-medium">LinkedIn</span>
+              </a>
+
+              <a
+                href={site.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-2 text-[color:var(--color-muted)] hover:text-[color:var(--color-accent)] transition-colors"
+              >
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2m-.5 2c-2.1 0-3.8 1.7-3.8 3.8v8.4c0 2.1 1.7 3.8 3.8 3.8h8.4c2.1 0 3.8-1.7 3.8-3.8V7.8c0-2.1-1.7-3.8-3.8-3.8H7.3m9.2 1.8a1 1 0 1 1 0 2 1 1 0 0 1 0-2M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+                </svg>
+                <span class="text-xs font-medium">Instagram</span>
+              </a>
+
+              <a
+                href={site.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-2 text-[color:var(--color-muted)] hover:text-[color:var(--color-accent)] transition-colors"
+              >
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+                <span class="text-xs font-medium">Facebook</span>
+              </a>
+
+              <a
+                href={site.socials.truthSocial}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-2 text-[color:var(--color-muted)] hover:text-[color:var(--color-accent)] transition-colors"
+              >
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.17-6.75-5.91 6.75H2.882l7.8-8.92L1.426 2.25h6.78l4.69 6.202 5.466-6.202zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                <span class="text-xs font-medium">Truth Social</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Contact Form -->
+        <div class="anim-fade-up" style="animation-delay: 150ms">
+          <form action="/api/contact" method="post" class="space-y-6">
+            <input type="hidden" name="bot-field" tabindex="-1" autocomplete="off" />
+
+            <div class="space-y-2">
+              <label class="field-label" for="name">Name</label>
+              <input class="field-input" id="name" name="name" required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="field-label" for="email">Email</label>
+              <input class="field-input" id="email" name="email" type="email" required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="field-label" for="message">Message</label>
+              <textarea class="field-input min-h-40" id="message" name="message" required></textarea>
+            </div>
+
+            <button class="inline-flex rounded-full px-8 py-3 button-primary font-medium" type="submit">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .anim-fade-up {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+</style>

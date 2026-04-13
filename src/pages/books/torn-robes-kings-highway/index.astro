@@ -1,0 +1,86 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Container from '../../../components/site/Container.astro';
+import ReviewCard from '../../../components/site/ReviewCard.astro';
+import { getProducts, getProductPath } from '../../../lib/content';
+import { getCollection } from 'astro:content';
+
+const products = await getProducts();
+const editions = products.filter(p => p.data.book === 'Torn Robes: The King\'s Highway');
+const allReviews = await getCollection('reviews');
+const reviews = allReviews
+  .filter(r => r.data.book === 'Torn Robes: The King\'s Highway' && r.data.featured)
+  .slice(0, 3);
+---
+
+<Layout
+  title="Torn Robes: The King's Highway | K.M. Quinn"
+  description="Book 3 of the Torn Robes series. Coming soon. Join us for the final chapter of the trilogy."
+  canonical="/books/torn-robes-kings-highway/"
+>
+  <section class="py-8 md:py-24">
+    <Container>
+      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <!-- Left: Book cover -->
+        <div class="flex justify-center items-start">
+          <img
+            src="/images/books/kings-highway.png"
+            alt="Torn Robes: The King's Highway"
+            class="book-cover-full max-w-xs w-full h-auto shadow-lg rounded-lg"
+          />
+        </div>
+
+        <!-- Right: Details -->
+        <div class="space-y-6">
+          <p class="eyebrow text-[color:var(--color-accent)]">Book Three of Three</p>
+          <h1 class="display-title text-5xl leading-tight">The King's Highway</h1>
+
+          <div class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-[color:var(--color-accent)] text-white">
+            Coming Soon
+          </div>
+
+          <div class="space-y-4 text-[color:var(--color-muted)] leading-relaxed">
+            <p>
+              The trilogy concludes. K.M. Quinn's third and final installment brings Gilford's characters to a profound crossroads—the King's Highway.
+            </p>
+            <p>
+              Where every road of faith ultimately leads. Where every reckoning finds its resolution. Where every torn robe is made whole. This is where the journey of Choices and Reckoning reaches its transcendent destination.
+            </p>
+            <p>
+              Join K.M. Quinn as she brings the stories of Pastor John, Louise Taylor, Titus, Sharise, and all of Gilford to their sacred conclusion. A journey of transformation, grace, and the unshakeable faith that makes all things possible.
+            </p>
+          </div>
+
+          {/* What Readers Say section */}
+          {reviews.length > 0 && (
+            <div class="my-8 space-y-4">
+              <p class="eyebrow text-[color:var(--color-accent)] text-sm">What Readers Say</p>
+              {reviews.map((review, idx) => (
+                <ReviewCard
+                  text={review.data.text}
+                  author={review.data.author}
+                  rating={review.data.rating}
+                  style={`animation-delay: ${100 + idx * 80}ms`}
+                />
+              ))}
+            </div>
+          )}
+
+          <hr class="my-8" />
+
+          <div>
+            <h2 class="display-title text-2xl mb-6">Preorder Coming Soon</h2>
+            <p class="text-[color:var(--color-muted)] mb-6">
+              Be the first to know when <em>Torn Robes: The King's Highway</em> becomes available for preorder.
+            </p>
+            <a href="/contact-me/" class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-primary hover:opacity-90 transition-opacity">
+              Get Preorder Info
+            </a>
+          </div>
+
+          <a href="/books/" class="inline-block text-[color:var(--color-accent)]">← Back to All Books</a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>

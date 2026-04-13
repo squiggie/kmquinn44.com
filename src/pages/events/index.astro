@@ -1,0 +1,171 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/site/Container.astro';
+import site from '../../data/site';
+---
+
+<Layout
+  title="Events & Appearances | K.M. Quinn"
+  description="Join K.M. Quinn at book signings, author events, and literary gatherings. See where the author of the Torn Robes series appears next."
+  canonical="/events/"
+>
+  <!-- Page Header -->
+  <section class="py-8 md:py-24">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="eyebrow text-[color:var(--color-accent)] mb-4 anim-fade-up" style="animation-delay: 0ms">Community & Appearances</p>
+        <h1 class="display-title text-5xl md:text-6xl leading-tight mb-6 anim-fade-up" style="animation-delay: 100ms">
+          Events & Readings
+        </h1>
+        <p class="text-lg text-[color:var(--color-muted)] leading-relaxed anim-fade-up" style="animation-delay: 200ms">
+          From intimate book signings to literary festivals, K.M. Quinn shares her stories and connects with readers across communities. Discover where she's been and the meaningful moments that shape the world of Torn Robes.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Vermont Memories Event -->
+  <section class="py-12 md:py-20 border-b border-[color:var(--color-line)]">
+    <Container>
+      <!-- Full-Width Feature Image -->
+      <div class="mb-12 anim-fade-up" style="animation-delay: 100ms">
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-[color:var(--color-line)] group">
+          <img
+            src="https://kmquinn44.com/wp-content/uploads/2025/08/IMG_4255-1-1080x763.jpg"
+            alt="Vermont Memories - Book signing event"
+            class="w-full h-auto object-cover group-hover:shadow-2xl transition-shadow duration-300"
+          />
+        </div>
+      </div>
+
+      <!-- Event Content -->
+      <div class="max-w-3xl mx-auto anim-fade-up" style="animation-delay: 200ms">
+        <h2 class="display-title text-4xl md:text-5xl leading-tight mb-4">
+          Vermont Memories
+        </h2>
+        <p class="text-sm uppercase tracking-widest text-[color:var(--color-accent)] font-semibold mb-6">
+          An Exciting Weekend Filled With Books & Art
+        </p>
+
+        <p class="text-lg text-[color:var(--color-muted)] leading-relaxed mb-6">
+          K.M. Quinn traveled to Vermont for an unforgettable weekend of book signings and author connections. Alongside fellow author Kelly Mitchell Schilling (<em>Paulie's Tale Tail</em>, Tales of Paulie series) and incredibly talented illustrator John Collado, K.M. experienced the warmth and enthusiasm of Vermont's literary community.
+        </p>
+
+        <p class="text-lg text-[color:var(--color-muted)] leading-relaxed">
+          <strong>"I want to express my deepest gratitude to the wonderful people of Vermont who graciously hosted me. Your support and enthusiasm made this experience truly unforgettable."</strong> — K.M. Quinn
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Author's at the Vineyard Event -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <!-- Event Header -->
+      <div class="max-w-3xl mx-auto mb-16 anim-fade-up" style="animation-delay: 100ms">
+        <h2 class="display-title text-4xl md:text-5xl leading-tight mb-4">
+          Author's at the Vineyard
+        </h2>
+        <p class="text-sm uppercase tracking-widest text-[color:var(--color-accent)] font-semibold mb-6">
+          2023 Community Gathering
+        </p>
+        <p class="text-lg text-[color:var(--color-muted)] leading-relaxed">
+          It was a wonderful day meeting fellow authors and everyone who braved the snow to attend this intimate literary event at a local vineyard. A celebration of community, stories, and shared passion for the written word.
+        </p>
+      </div>
+
+      <!-- 2x2 Image Gallery -->
+      <div class="max-w-6xl mx-auto mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Image 1 -->
+          <div class="anim-fade-up rounded-2xl overflow-hidden shadow-lg border border-[color:var(--color-line)] group" style="animation-delay: 150ms">
+            <img
+              src="https://kmquinn44.com/wp-content/uploads/2023/03/me-img_3230-1.jpg?w=768"
+              alt="Author at the Vineyard"
+              class="w-full h-64 md:h-80 object-cover group-hover:shadow-2xl transition-shadow duration-300"
+            />
+          </div>
+
+          <!-- Image 2 -->
+          <div class="anim-fade-up rounded-2xl overflow-hidden shadow-lg border border-[color:var(--color-line)] group" style="animation-delay: 200ms">
+            <img
+              src="https://kmquinn44.com/wp-content/uploads/2023/03/img_3247.jpg?w=768"
+              alt="Authors gathered at the event"
+              class="w-full h-64 md:h-80 object-cover group-hover:shadow-2xl transition-shadow duration-300"
+            />
+          </div>
+
+          <!-- Image 3 -->
+          <div class="anim-fade-up rounded-2xl overflow-hidden shadow-lg border border-[color:var(--color-line)] group" style="animation-delay: 250ms">
+            <img
+              src="https://kmquinn44.com/wp-content/uploads/2023/03/at-the-vineyard-img_3238.jpg?w=768"
+              alt="Community at the Vineyard event"
+              class="w-full h-64 md:h-80 object-cover group-hover:shadow-2xl transition-shadow duration-300"
+            />
+          </div>
+
+          <!-- Image 4 -->
+          <div class="anim-fade-up rounded-2xl overflow-hidden shadow-lg border border-[color:var(--color-line)] group" style="animation-delay: 300ms">
+            <img
+              src="https://kmquinn44.com/wp-content/uploads/2023/03/img_24441.jpg?w=768"
+              alt="Vineyard event gathering"
+              class="w-full h-64 md:h-80 object-cover group-hover:shadow-2xl transition-shadow duration-300"
+            />
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-transparent via-[rgba(199,142,107,0.06)] to-transparent">
+    <Container class="max-w-3xl mx-auto text-center anim-fade-up" style="animation-delay: 150ms">
+      <h2 class="display-title text-3xl md:text-4xl mb-6">
+        Ready to Connect?
+      </h2>
+      <p class="text-lg text-[color:var(--color-muted)] mb-8 leading-relaxed">
+        For information about upcoming events, book signings, or speaking engagements, reach out directly.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact-me/" class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-primary">
+          Get in Touch
+        </a>
+        <a href="/books/" class="inline-block px-6 py-2.5 rounded-full text-sm font-medium button-secondary">
+          Explore the Books
+        </a>
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .anim-fade-up {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+
+  /* Responsive gallery adjustments for tablet */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Mobile gallery stacking */
+  @media (max-width: 767px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
