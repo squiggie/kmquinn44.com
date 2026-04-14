@@ -29,31 +29,22 @@ import site from '../../data/site';
         <div class="anim-fade-up" style="animation-delay: 100ms">
           <div class="mb-12">
             <p class="text-sm uppercase tracking-widest text-[color:var(--color-accent)] font-semibold mb-4">
-              Email
+              Get in Touch
+            </p>
+            <p class="text-lg text-[color:var(--color-muted)] leading-relaxed mb-6">
+              Have a question about the Torn Robes series? Want to discuss an event or collaboration? I'd love to hear from you.
             </p>
             <a
               href="mailto:info@kmquinn44.com"
-              class="block text-3xl md:text-4xl font-semibold text-[color:var(--color-accent)] hover:text-[color:var(--color-accent-dark)] transition-colors break-all mb-4"
+              class="inline-flex rounded-full px-8 py-3 button-primary font-medium"
             >
-              info@kmquinn44.com
+              Send an Email
             </a>
-            <p class="text-sm text-[color:var(--color-muted)]">
-              Direct email—responses within 2-3 business days
-            </p>
-          </div>
-
-          <div class="mb-12">
-            <p class="text-lg text-[color:var(--color-muted)] leading-relaxed mb-6">
-              Have a question about the Torn Robes series? Want to discuss an event or collaboration? I'd love to hear from you. Reach out using any method below—I read and respond to every message.
-            </p>
-            <p class="text-sm text-[color:var(--color-muted)]">
-              <em>"Every reader's voice matters. Whether you have a question, a story to share, or want to discuss how the Torn Robes series has impacted you, I'm here to listen."</em> — K.M. Quinn
-            </p>
           </div>
 
           <!-- Social Links -->
-          <div>
-            <p class="text-sm uppercase tracking-widest text-[color:var(--color-accent)] font-semibold mb-6">
+          <div class="mt-16">
+            <p class="text-sm uppercase tracking-widest text-[color:var(--color-accent)] font-semibold mb-8">
               Follow & Connect
             </p>
             <div class="flex flex-wrap gap-6">
@@ -108,31 +99,6 @@ import site from '../../data/site';
           </div>
         </div>
 
-        <!-- Right Column: Contact Form -->
-        <div class="anim-fade-up" style="animation-delay: 150ms">
-          <form action="/api/contact" method="post" class="space-y-6">
-            <input type="hidden" name="bot-field" tabindex="-1" autocomplete="off" />
-
-            <div class="space-y-2">
-              <label class="field-label" for="name">Name</label>
-              <input class="field-input" id="name" name="name" required />
-            </div>
-
-            <div class="space-y-2">
-              <label class="field-label" for="email">Email</label>
-              <input class="field-input" id="email" name="email" type="email" required />
-            </div>
-
-            <div class="space-y-2">
-              <label class="field-label" for="message">Message</label>
-              <textarea class="field-input min-h-40" id="message" name="message" required></textarea>
-            </div>
-
-            <button class="inline-flex rounded-full px-8 py-3 button-primary font-medium" type="submit">
-              Send Message
-            </button>
-          </form>
-        </div>
       </div>
     </Container>
   </section>
