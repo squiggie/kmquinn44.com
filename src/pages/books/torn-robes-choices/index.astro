@@ -94,50 +94,28 @@ const reviews = allReviews
           </div>
 
           <!-- Buy a Signed Copy Section -->
-          <div class="mb-12">
-            <p class="eyebrow text-[color:var(--color-accent)] mb-4">Buy a Signed Copy</p>
-            <div class="flex flex-wrap gap-4">
-              <a
-                href="#"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#c78e6b] text-white font-medium hover:bg-[#b37a57] transition-colors"
-              >
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                </svg>
-                Buy Now
-              </a>
-            </div>
-          </div>
-
-          <hr class="my-8" />
-
-          <div>
-            <h2 class="display-title text-2xl mb-6">Choose Your Edition</h2>
-            <div class="grid gap-4 md:grid-cols-2">
-              {editions.map(edition => (
-                <div class="content-card p-6">
-                  <p class="eyebrow text-[color:var(--color-accent)] mb-2">{edition.data.format}</p>
-                  <p class="text-xl font-semibold mb-4">${edition.data.price}</p>
-                  {edition.data.availability === 'in-stock' && (
-                    <>
+          {(() => {
+            const signedEditions = editions.filter(e => e.data.format.startsWith('Signed'));
+            return signedEditions.length > 0 && (
+              <div class="mb-12">
+                <p class="eyebrow text-[color:var(--color-accent)] mb-4">Buy a Signed Copy</p>
+                <div class="grid gap-4 md:grid-cols-2">
+                  {signedEditions.map(edition => (
+                    <div class="content-card p-6 flex flex-col">
+                      <p class="eyebrow text-[color:var(--color-accent)] mb-2">{edition.data.format}</p>
+                      <p class="text-2xl font-semibold mb-4">${edition.data.price}</p>
                       <a
                         href={edition.data.purchaseUrl}
-                        class="block text-center px-4 py-2.5 rounded-full text-sm font-medium button-primary hover:opacity-90 transition-opacity mb-3"
+                        class="block text-center px-4 py-2.5 rounded-full text-sm font-medium button-primary hover:opacity-90 transition-opacity"
                       >
-                        Buy with PayPal
+                        Buy Now
                       </a>
-                      <a
-                        href={getProductPath(edition)}
-                        class="block text-center text-sm text-[color:var(--color-accent)]"
-                      >
-                        View Details →
-                      </a>
-                    </>
-                  )}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            );
+          })()}
 
           <a href="/books/" class="inline-block text-[color:var(--color-accent)]">← Back to All Books</a>
         </div>
