@@ -19,6 +19,10 @@ const getReadingTime = (post: any): number => {
 
 // Extract first image from post content
 const getFirstImageFromPost = (post: any): string | null => {
+  if (post.data.heroImage) {
+    return post.data.heroImage;
+  }
+
   if (!post.body) return null;
 
   // Look for img tags in the HTML content
@@ -32,12 +36,12 @@ const getFirstImageFromPost = (post: any): string | null => {
 // Placeholder gradient backgrounds based on index
 const getPlaceholderGradient = (index: number): string => {
   const gradients = [
-    'from-[#8a3b2d] via-[#c78e6b] to-[#f2eadf]',
-    'from-[#6e6258] via-[#a89382] to-[#dcc8b6]',
-    'from-[#c78e6b] via-[#e8c4a8] to-[#f5ede1]',
-    'from-[#a67c5b] via-[#d4a583] to-[#f0e4d8]',
-    'from-[#8a3b2d] via-[#b8714d] to-[#e5d4c1]',
-    'from-[#5a4a42] via-[#8a7068] to-[#d9ccc0]',
+    'from-[#1f8fa3] via-[#78bed0] to-[#f7fbfc]',
+    'from-[#526d72] via-[#87aeb8] to-[#d8edf2]',
+    'from-[#78bed0] via-[#b8dfe8] to-[#f7fbfc]',
+    'from-[#417f8b] via-[#8fc9d6] to-[#e3f1f4]',
+    'from-[#1f8fa3] via-[#3da9bc] to-[#d6ecf2]',
+    'from-[#405b60] via-[#729aa4] to-[#d9edf1]',
   ];
   return gradients[index % gradients.length];
 };
@@ -191,7 +195,7 @@ const { Content } = await page.render();
 
 <style>
   .blog-card {
-    background: rgba(255, 250, 244, 0.95);
+    background: rgba(255, 255, 255, 0.96);
   }
 
   .blog-card:hover {
@@ -199,7 +203,7 @@ const { Content } = await page.render();
   }
 
   .blog-card-featured {
-    background: rgba(255, 250, 244, 0.95);
+    background: rgba(255, 255, 255, 0.96);
   }
 
   .blog-card-featured:hover {

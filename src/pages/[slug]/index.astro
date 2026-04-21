@@ -13,6 +13,8 @@ const reservedSlugs = new Set([
   'cart',
   'checkout',
   'my-account',
+  'vendor-hub',
+  'home-school-resources',
 ]);
 
 export async function getStaticPaths() {
@@ -25,6 +27,8 @@ export async function getStaticPaths() {
     'cart',
     'checkout',
     'my-account',
+    'vendor-hub',
+    'home-school-resources',
   ]);
   const pages = await getPages();
   return pages

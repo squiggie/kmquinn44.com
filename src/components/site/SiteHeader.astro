@@ -3,11 +3,15 @@ import Container from './Container.astro';
 import site from '../../data/site';
 
 const navItems = [
-  { href: '/books/', label: 'Books' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/events/', label: 'Events' },
   { href: '/about-me/', label: 'About' },
   { href: '/contact-me/', label: 'Contact' },
+];
+
+const resourceItems = [
+  { href: '/home-school-resources/', label: 'Home School Resources' },
+  { href: '/events/', label: 'Events' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/vendor-hub/', label: 'Vendor Hub' },
 ];
 ---
 
@@ -17,7 +21,27 @@ const navItems = [
     <a href="/" class="display-title text-lg md:text-xl shrink-0">{site.title}</a>
 
     <!-- Desktop nav (center) -->
-    <nav aria-label="Primary" class="hidden md:flex gap-6 text-sm">
+    <nav aria-label="Primary" class="hidden md:flex items-center gap-6 text-sm">
+      <a href="/books/" class="nav-link">Books</a>
+      <div class="nav-dropdown group relative">
+        <button
+          type="button"
+          class="nav-link inline-flex items-center gap-1"
+          aria-haspopup="true"
+        >
+          Resources
+          <svg aria-hidden="true" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" viewBox="0 0 16 16" fill="none">
+            <path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu absolute left-1/2 top-full hidden min-w-60 -translate-x-1/2 pt-4 group-hover:block group-focus-within:block">
+          <div class="rounded-xl border border-[color:var(--color-line)] bg-[rgba(255,255,255,0.96)] p-2 shadow-[0_20px_60px_rgba(31,27,23,0.14)] backdrop-blur">
+            {resourceItems.map((item) => (
+              <a href={item.href} class="dropdown-link">{item.label}</a>
+            ))}
+          </div>
+        </div>
+      </div>
       {navItems.map((item) => (
         <a href={item.href} class="nav-link">{item.label}</a>
       ))}
@@ -40,6 +64,13 @@ const navItems = [
 <!-- Mobile fullscreen menu -->
 <div id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Navigation">
   <button id="menu-close" aria-label="Close menu" class="absolute top-6 right-6 p-2 text-[color:var(--color-muted)]">✕</button>
+  <a href="/books/">Books</a>
+  <div class="mobile-menu-group">
+    <p>Resources</p>
+    {resourceItems.map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+  </div>
   {navItems.map((item) => (
     <a href={item.href}>{item.label}</a>
   ))}
@@ -73,3 +104,42 @@ const navItems = [
     });
   });
 </script>
+
+<style>
+  .dropdown-link {
+    display: block;
+    border-radius: 0.625rem;
+    color: var(--color-muted);
+    padding: 0.65rem 0.85rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+
+  .dropdown-link:hover,
+  .dropdown-link:focus-visible {
+    background: rgba(31, 143, 163, 0.1);
+    color: var(--color-ink);
+    outline: none;
+  }
+
+  .mobile-menu-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobile-menu-group p {
+    color: var(--color-accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu .mobile-menu-group a {
+    font-size: clamp(1.5rem, 5vw, 2.4rem);
+  }
+</style>

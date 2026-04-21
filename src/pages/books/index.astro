@@ -20,12 +20,12 @@ const bookDetails = [
   {
     slug: 'torn-robes-kings-highway',
     title: 'Torn Robes: The King\'s Highway',
-    image: '/images/books/kings-highway.png',
+    image: '/images/blog/Torn_Robes_The_Kings__Highway_Cover.avif',
     number: 'Book Three',
     availability: 'coming-soon',
     synopsis: [
       'The trilogy reaches its sacred conclusion. After the choices that divided Gilford and the reckoning that shattered certainties, K.M. Quinn brings her characters to the King\'s Highway—a spiritual and emotional crossroads where every soul must finally ask: What am I willing to become?',
-      'In this profound final volume, Pastor John, Louise Taylor, Titus, Sharise, and all of Gilford face their ultimate transformations. Where does faith lead when tested to its breaking point? How does grace flow through the deepest wounds? And what happens when we finally surrender to the path God has been calling us toward all along?',
+      'In this profound final volume, Pastor John, Tags, Brittany, and all of Gilford face their ultimate transformations. Where does faith lead when tested to its breaking point? How does grace flow through the deepest wounds? And what happens when we finally surrender to the path God has been calling us toward all along?',
       'The King\'s Highway is not an ending—it\'s a homecoming. A stunning conclusion to K.M. Quinn\'s masterwork of faith, redemption, and the unshakeable belief that all things are possible with God.'
     ],
     cta: ''
@@ -39,10 +39,11 @@ const bookDetails = [
     amazon: {
       hardcover: 'https://www.amazon.com/Torn-Robes-Reckoning-K-Quinn/dp/B0FLD88B37',
       paperback: 'https://www.amazon.com/Torn-Robes-Reckoning-K-Quinn/dp/B0C8QZDLB2',
+      companionGuide: 'https://www.amazon.com/Companion-Guide-Torn-Robes-Reckoning/dp/B0FF24915C?sr=8-4',
     },
     synopsis: [
       'The consequences of choice demand accountability. As Gilford moves forward from the spiritual awakening Pastor John brought, the town must reckon with the cost of transformation. Hidden truths surface. Long-buried secrets threaten relationships. And the characters readers met in Choices discover that real faith isn\'t measured in moments of inspiration—it\'s tested in the crucible of everyday life.',
-      'Reckoning is K.M. Quinn\'s most intimate and challenging work. Through Titus\'s intellectual crisis, Louise\'s fierce protection of those she loves, Sharise\'s coming-of-age awakening, and Pastor John\'s deepening ministry, we witness how accountability becomes grace, and how true growth requires facing what we\'ve been running from.',
+      'Reckoning is K.M. Quinn\'s most intimate and challenging work. Through Titus\'s intellectual crisis, the moment where Tags’ past collides with his future, Sarah\'s coming-of-age awakening, and Pastor John\'s deepening ministry, we witness how accountability becomes grace, and how true growth requires facing what we\'ve been running from.',
       'This is the book that transforms a series into a spiritual journey. By the final page, characters and readers alike understand: reckoning isn\'t punishment. It\'s the price of wisdom, and the foundation of real transformation.'
     ],
     cta: 'Dive deeper into the story'
@@ -56,10 +57,11 @@ const bookDetails = [
     amazon: {
       hardcover: 'https://www.amazon.com/Torn-Robes-Choices-K-Quinn/dp/B0DYCLN3WR',
       paperback: 'https://www.amazon.com/Torn-Robes-K-M-Quinn/dp/B0BGP2233H',
+      companionGuide: 'https://www.amazon.com/Companion-Guide-Torn-Robes-Choices/dp/B0FFHDQM8K?sr=8-3',
     },
     synopsis: [
       'What happens when a man of faith arrives in a town that isn\'t looking for salvation? K.M. Quinn\'s debut novel introduces us to Gilford—a small New England town with big secrets—and Pastor John, a man answering a divine calling he never expected. What unfolds is a story that will challenge everything you think you know about faith, community, and the power of one person\'s willingness to follow God\'s call, no matter the cost.',
-      'Through the eyes of Pastor John, Louise Taylor, Titus, Sharise, and others, we enter a world where teenagers question everything, adults defend their status quo, and the strongest voices are often the quietest ones. Torn Robes: Choices asks the central question of faith: What do you do when God calls you to something that doesn\'t make sense? When your choices are torn between comfort and conviction, between who you were and who you\'re meant to become?',
+      'Through the eyes of Pastor John, Louise Taylor, Titus, Sarah, Sharise, and others, we enter a world where teenagers question everything, adults defend their status quo, and the strongest voices are often the quietest ones. Torn Robes: Choices asks the central question of faith: What do you do when God calls you to something that doesn\'t make sense? When your choices are torn between comfort and conviction, between who you were and who you\'re meant to become?',
       'This is literary fiction with soul. A modern exploration of spiritual awakening, community, and the transformative power of one pastor\'s faith in a town desperate for hope—whether it knows it or not.'
     ],
     cta: 'Begin the journey'
@@ -103,7 +105,7 @@ const getEditionsByBook = (bookTitle) => {
 
     return (
       <>
-      <section class={`py-16 md:py-24 ${bookIndex % 2 === 1 ? 'bg-gradient-to-b from-transparent via-[rgba(199,142,107,0.04)] to-transparent' : ''}`}>
+      <section class={`py-16 md:py-24 ${bookIndex % 2 === 1 ? 'bg-gradient-to-b from-transparent via-[rgba(120,190,208,0.07)] to-transparent' : ''}`}>
         <Container>
           <div class={`grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center ${isLeftImage ? '' : 'lg:auto-cols-fr'}`}>
 
@@ -143,12 +145,12 @@ const getEditionsByBook = (bookTitle) => {
                     <!-- Buy on Amazon -->
                     <div>
                       <p class="eyebrow text-[color:var(--color-accent)] mb-4">Buy on Amazon</p>
-                      <div class="flex flex-wrap gap-4">
+                      <div class="grid gap-3 sm:grid-cols-3">
                         <a
                           href={book.amazon.hardcover}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FF9900] text-white font-medium hover:bg-[#E68A00] transition-colors"
+                          class="inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 py-3 rounded-full bg-[color:var(--color-accent)] text-sm text-white font-medium hover:bg-[#176f80] transition-colors"
                         >
                           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M13.146 8.6c0 .448-.372.8-.83.8-.46 0-.832-.352-.832-.8s.372-.8.83-.8c.459 0 .832.352.832.8zm-5.186 8.4h4.194v-1.2H7.96v1.2zm10.318 3.4H6.186V4h11.092v15.8zm-12.15-17h12.21c.595 0 1.08.486 1.08 1.08V19.8c0 .595-.485 1.08-1.08 1.08H5.128c-.594 0-1.08-.485-1.08-1.08V1.88c0-.594.486-1.08 1.08-1.08z"/>
@@ -159,13 +161,26 @@ const getEditionsByBook = (bookTitle) => {
                           href={book.amazon.paperback}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FF9900] text-white font-medium hover:bg-[#E68A00] transition-colors"
+                          class="inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 py-3 rounded-full bg-[color:var(--color-accent)] text-sm text-white font-medium hover:bg-[#176f80] transition-colors"
                         >
                           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4H4zm3 1h10v2H7V5zm0 4h10v2H7V9zm0 4h10v2H7v-2z"/>
                           </svg>
                           Paperback
                         </a>
+                        {book.amazon.companionGuide && (
+                          <a
+                            href={book.amazon.companionGuide}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 py-3 rounded-full bg-[color:var(--color-accent)] text-sm text-white font-medium hover:bg-[#176f80] transition-colors"
+                          >
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4H4zm3 1h10v2H7V5zm0 4h10v2H7V9zm0 4h10v2H7v-2z"/>
+                            </svg>
+                            Companion Guide
+                          </a>
+                        )}
                       </div>
                     </div>
 
@@ -207,7 +222,7 @@ const getEditionsByBook = (bookTitle) => {
 
       {/* Customer Reviews Showcase - Below King's Highway */}
       {isLastBook && (
-        <section class="py-16 md:py-24 bg-gradient-to-b from-transparent via-[rgba(199,142,107,0.06)] to-transparent">
+        <section class="py-16 md:py-24 bg-gradient-to-b from-transparent via-[rgba(120,190,208,0.08)] to-transparent">
           <Container>
             <div class="max-w-4xl mx-auto">
               <div class="text-center mb-12">

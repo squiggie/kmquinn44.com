@@ -4,6 +4,7 @@ slug: "the-blogging-bug"
 publishDate: "2025-05-21 17:08:11"
 excerpt: ""
 description: ""
+heroImage: "/images/blog/Black_and_white_of_Gilford.avif"
 tags: []
 legacyId: 1100
 legacyUrl: "https://kmquinn44.com/?p=1100"
@@ -37,7 +38,3 @@ draft: false
 <!-- wp:paragraph -->
 <p>I can't wait!</p>
 <!-- /wp:paragraph -->
-
-<!-- wp:image -->
-<figure class="wp-block-image"><img alt="" /></figure>
-<!-- /wp:image -->

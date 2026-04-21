@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/site/Container.astro';
+
+const vendors = [
+  {
+    name: 'Colleen Quinlan Photography',
+    category: 'Nature / Abstract / Portrait',
+    description:
+      'Colleen Quinlan&rsquo;s photography explores the intersection of nature, abstraction, and human emotion, capturing ethereal moments that invite reflection and wonder. Her striking imagery also graces the covers of Torn Robes: Choices and Torn Robes: Reckoning, where her visual storytelling deepens the books&rsquo; themes of transformation and truth.',
+    href: 'https://www.instagram.com/cquinlan_photography/',
+    image: '/images/vendor-hub/colleen-quinlan-photography.jpeg',
+    alt: 'Photography by Colleen Quinlan',
+  },
+  {
+    name: 'Archer Lough',
+    category: 'Author / Editor / Publisher',
+    description:
+      'Archer is an author, editor, publisher, and artist. He has been writing novels since 2017, with many works in the editing process. His genres range from Sci-Fi and Fantasy to Romance and Realistic Fiction.',
+    href: 'https://arccreatives.framer.website',
+    image: '/images/vendor-hub/archer.jpeg',
+    alt: 'Archer Lough portrait',
+  },
+  {
+    name: 'John Collado',
+    category: 'Illustrator',
+    description:
+      'Since retiring in 1991, John has dedicated himself to his art business, developing a unique style that blends realism with whimsical and satirical elements. He has embraced both traditional and digital art, allowing him to create captivating visuals for children&rsquo;s books and cover art for various authors and publishers.',
+    href: 'https://johncolladoart.com/',
+    image: '/images/vendor-hub/john-collado.jpg',
+    alt: 'John Collado portrait',
+  },
+  {
+    name: 'Susan Phillips',
+    category: 'Author / Educator',
+    description:
+      'Susan is an accomplished author and educator with extensive experience in higher education. She specializes in religious and theological studies, effectively engaging her students and readers through insightful teaching methods and writing.',
+    href: 'https://saphillipswriter.com/',
+    image: '/images/vendor-hub/susan-phillips.jpeg',
+    alt: 'Susan Phillips portrait',
+  },
+  {
+    name: 'Megan Rubbert',
+    category: 'Website Designer / Graphic Designer / Virtual Assistant',
+    description:
+      'Megan has owned her own virtual assistant business, BizBoss Virtual Assistant, since 2021. She offers a variety of services including social media management, website design and creation, graphic design, and more.',
+    href: 'mailto:meganwallaceva@gmail.com',
+    image: '/images/vendor-hub/megan-rubbert.jpg',
+    alt: 'Megan Rubbert portrait',
+  },
+  {
+    name: 'Kelly Schilling',
+    category: 'Children&rsquo;s Author',
+    description:
+      'Kelly Mitchell Schilling creates captivating children&rsquo;s stories that bring the adventures of Paulie the marmot to life. Paulie&rsquo;s Tale Tail is the first book in the Tales of Paulie series.',
+    href: 'https://kellymitchellschilling.com/',
+    image: '/images/vendor-hub/kelly-schilling.jpg',
+    alt: 'Kelly Schilling portrait',
+  },
+  {
+    name: 'Marilyn Moseley',
+    category: 'Author / Blogger / Photographer',
+    description:
+      'Marilyn is an inspirational writer, blogger, photographer, and gardener from North Idaho. She is passionate about sharing the beauty of God&rsquo;s creation with others through her writing and photography.',
+    href: 'https://www.mountaintopspice.com',
+    image: '/images/vendor-hub/marilyn-moseley.jpeg',
+    alt: 'Marilyn Moseley portrait',
+  },
+  {
+    name: 'Stacy Williams',
+    category: 'Author / Blogger',
+    description:
+      'Stacy is an author from the beautiful region of northern Idaho. She has written Love, Emily, the first book in her Hawaiian Letters Series. Additionally, she was a finalist in the Touched by Love Contest for Christian Contemporary Romance.',
+    href: 'https://www.wordsbystacy.com/',
+    image: '/images/vendor-hub/stacy-williams.jpeg',
+    alt: 'Stacy Williams portrait',
+  },
+];
+---
+
+<Layout
+  title="Vendor Hub | K.M. Quinn"
+  description="Connect with authors, artists, photographers, editors, illustrators, designers, and creative resources recommended by K.M. Quinn."
+  canonical="/vendor-hub/"
+>
+  <section class="py-8 md:py-24">
+    <Container>
+      <div class="grid gap-10 lg:grid-cols-[1fr_0.72fr] lg:items-end">
+        <div class="max-w-3xl">
+          <p class="eyebrow mb-4 text-[color:var(--color-accent)] anim-fade-up">Community Resources</p>
+          <h1 class="display-title mb-6 text-5xl leading-tight md:text-7xl anim-fade-up" style="animation-delay: 100ms">
+            Vendor Hub
+          </h1>
+          <p class="text-lg leading-relaxed text-[color:var(--color-muted)] md:text-xl anim-fade-up" style="animation-delay: 200ms">
+            Connect with trusted creatives, authors, artists, and service providers who support storytelling, publishing, design, and community.
+          </p>
+        </div>
+
+        <div class="content-card p-6 anim-fade-up" style="animation-delay: 250ms">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent)]">
+            Featured Network
+          </p>
+          <p class="text-base leading-relaxed text-[color:var(--color-muted)]">
+            A curated collection of creative professionals, authors, artists, and services connected to the storytelling community.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-16 md:pb-24">
+    <Container width="wide">
+      <div class="grid gap-8">
+        {vendors.map((vendor, index) => (
+          <article
+            class:list={[
+              'vendor-panel grid overflow-hidden border border-[color:var(--color-line)] bg-[rgba(255,250,244,0.76)] shadow-[var(--shadow-soft)]',
+              index % 2 === 0
+                ? 'md:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)]'
+                : 'md:grid-cols-[minmax(0,0.64fr)_minmax(0,0.36fr)]',
+              index % 2 === 1 && 'md:[&_.vendor-image-wrap]:order-2',
+            ]}
+          >
+            <div class="vendor-image-wrap min-h-[12rem] md:min-h-[18rem]">
+              <img src={vendor.image} alt={vendor.alt} class="h-full w-full object-cover" loading={index < 2 ? 'eager' : 'lazy'} />
+            </div>
+
+            <div class="flex min-h-[16rem] flex-col justify-center p-7 md:p-9 lg:p-12">
+              <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent)]" set:html={vendor.category} />
+              <h2 class="display-title mb-5 text-4xl leading-tight md:text-5xl">{vendor.name}</h2>
+              <p class="mb-8 text-lg leading-relaxed text-[color:var(--color-muted)]" set:html={vendor.description} />
+              <a
+                href={vendor.href}
+                class="inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium button-primary"
+                target={vendor.href.startsWith('http') ? '_blank' : undefined}
+                rel={vendor.href.startsWith('http') ? 'noreferrer noopener' : undefined}
+              >
+                Learn more
+                <svg aria-hidden="true" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                  <path d="M5 3h8v8M12.5 3.5 3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  .vendor-panel {
+    border-radius: 1.5rem;
+  }
+
+  @media (max-width: 767px) {
+    .vendor-panel {
+      border-radius: 1.25rem;
+    }
+  }
+</style>
