@@ -4,7 +4,7 @@ slug: "terms-and-conditions"
 description: ""
 legacyId: 141
 legacyUrl: "https://kmquinn44.com/?page_id=141"
-draft: false
+draft: true
 ---
 
 <!-- wp:paragraph -->
