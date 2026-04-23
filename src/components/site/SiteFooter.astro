@@ -4,12 +4,10 @@ import site from '../../data/site';
 ---
 
 <footer class="border-t border-[color:var(--color-line)] py-10 text-sm text-[color:var(--color-muted)]">
-  <Container class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-    <div class="space-y-2">
-      <img src="/images/logo.png" alt={site.title} class="h-14 w-auto" />
-      <p>Books, essays, events, and community links.</p>
-    </div>
-    <div class="flex flex-wrap gap-4">
+  <Container class="flex flex-col items-center gap-6 text-center">
+    <img src="/images/logo.png" alt={site.title} class="h-24 w-auto" />
+    <p>Books, essays, events, and community links.</p>
+    <div class="flex flex-wrap justify-center gap-4">
       <a href="/privacy-policy/" class="transition-opacity hover:opacity-65">Privacy</a>
       <a href="/terms-and-conditions/" class="transition-opacity hover:opacity-65">Terms</a>
       <a href="/disclaimer/" class="transition-opacity hover:opacity-65">Disclaimer</a>
