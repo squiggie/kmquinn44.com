@@ -18,7 +18,9 @@ const resourceItems = [
 <header id="site-header" class="sticky top-0 z-20 border-b border-[color:var(--color-line)] site-surface transition-shadow duration-300">
   <Container class="flex items-center justify-between gap-6 py-4">
     <!-- Logo -->
-    <a href="/" class="display-title text-lg md:text-xl shrink-0">{site.title}</a>
+    <a href="/" class="shrink-0">
+      <img src="/images/logo.png" alt={site.title} class="h-10 w-auto" />
+    </a>
 
     <!-- Desktop nav (center) -->
     <nav aria-label="Primary" class="hidden md:flex items-center gap-6 text-sm">
